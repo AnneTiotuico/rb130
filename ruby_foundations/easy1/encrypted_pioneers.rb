@@ -1,4 +1,20 @@
-
+def rot13(string)
+  doubled_alphabet_lower = ('a'..'z').to_a * 2
+  doubled_alphabet_upper = ('A'..'Z').to_a * 2
+  result = ''
+  string.chars do |char|
+    if char.match?(/[a-z]/)
+      idx = doubled_alphabet_lower.index(char)
+      result << doubled_alphabet_lower[idx + 13]
+    elsif char.match?(/[A-Z]/)
+      idx = doubled_alphabet_upper.index(char)
+      result << doubled_alphabet_upper[idx + 13]
+    else
+      result << char
+    end
+  end
+  result
+end
 
 
 p rot13("Nqn Ybirynpr")
